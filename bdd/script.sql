@@ -1,0 +1,14 @@
+CREATE DATABASE  livreDor;
+
+USE livreDor;
+
+CREATE TABLE Utilisateurs (
+
+	ID_Utilisateur INT NOT NULL AUTO_INCREMENT,
+	Nom VARCHAR (50) NOT NULL,
+	Prenom VARCHAR (50) NOT NULL,
+	Email VARCHAR (100) NOT NULL UNIQUE,
+	Mdp VARCHAR (100) NOT NULL,
+	PRIMARY KEY (ID_Utilisateur)
+);
+
