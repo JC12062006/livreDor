@@ -9,6 +9,7 @@ CREATE TABLE Utilisateurs (
 	Prenom VARCHAR (50) NOT NULL,
 	Email VARCHAR (100) NOT NULL UNIQUE,
 	Mdp VARCHAR (100) NOT NULL,
+	maildeux VARCHAR (100) NOT NULL,
 	PRIMARY KEY (ID_Utilisateur)
 );
 
