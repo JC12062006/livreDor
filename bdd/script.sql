@@ -12,3 +12,11 @@ CREATE TABLE Utilisateurs (
 	PRIMARY KEY (ID_Utilisateur)
 );
 
+CREATE TABLE Signatures (
+    ID_Signature INT NOT NULL AUTO_INCREMENT,
+    Message TEXT NOT NULL,
+    Date_Signature DATETIME DEFAULT CURRENT_TIMESTAMP,
+    ID_Utilisateur INT,
+    PRIMARY KEY (ID_Signature),
+    FOREIGN KEY (ID_Utilisateur) REFERENCES Utilisateurs(ID_Utilisateur) ON DELETE SET NULL
+);
