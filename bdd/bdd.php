@@ -1,7 +1,7 @@
 <?php
 
 	try{
-		$users = "root";
+		$users = "monuser";
 		$pass = "";
 		$bdd = new PDO ('mysql:host=localhost;dbname=projetJoan',$users,$pass);
 

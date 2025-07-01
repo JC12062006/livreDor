@@ -16,7 +16,6 @@
             <li><a href="index.php?page=accueil">Accueil</a></li>
             <li><a href="index.php?page=livreDor">Livre d'Or</a></li>
             <li><a href="index.php?page=consultation">Consultation</a></li>
-
         </ul>
     </nav>
 </header>
