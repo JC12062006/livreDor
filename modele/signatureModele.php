@@ -1,19 +1,36 @@
 <?php
-require_once("../bdd/bdd.php");
+// Connexion à la base de données
+require_once(__DIR__ . '/../bdd/bdd.php');
 
-function ajouterSignature($idUtilisateur, $message) {
-    global $connexion;
-    $sql = "INSERT INTO Signatures (Message, ID_Utilisateur) VALUES (?, ?)";
-    $stmt = $connexion->prepare($sql);
-    $stmt->execute([$message, $idUtilisateur]);
-}
-
+/**
+ * Récupère toutes les signatures du livre d'or.
+ *
+ * @return array Tableau associatif contenant les messages triés par date.
+ */
 function recupererSignatures() {
-    global $connexion;
-    $sql = "SELECT s.Message, s.Date_Signature, u.Prenom, u.Nom FROM Signatures s
-            JOIN Utilisateurs u ON s.ID_Utilisateur = u.ID_Utilisateur
-            ORDER BY s.Date_Signature DESC";
-    $stmt = $connexion->query($sql);
-    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    global $bdd;
+
+    $sql = "SELECT * FROM Signatures ORDER BY Date_Signature DESC";
+    $resultat = $bdd->query($sql);
+    
+    return $resultat->fetchAll(PDO::FETCH_ASSOC);
 }
-?>
+
+/**
+ * Ajoute une nouvelle signature dans la base de données.
+ *
+ * @param string $nom_auteur Le nom de la personne qui signe.
+ * @param string $message Le contenu du message.
+ */
+function ajouterSignature($nom_auteur, $message) {
+    global $bdd;
+
+    $sql = "INSERT INTO Signatures (Nom_Auteur, Message) 
+            VALUES (:nom, :message)";
+    
+    $stmt = $bdd->prepare($sql);
+    $stmt->execute([
+        ':nom'     => $nom_auteur,
+        ':message' => $message
+    ]);
+}

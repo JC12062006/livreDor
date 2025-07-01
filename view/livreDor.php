@@ -1,23 +1,41 @@
 <?php
-require_once("../modele/signatureModele.php");
+require_once(__DIR__ . '/../modele/signatureModele.php');
 $signatures = recupererSignatures();
-include("commun/header.php");
 ?>
 
-<h2>Livre d'Or</h2>
+<main class="livre">
+    <h2>💬 Livre d'Or</h2>
 
-<?php if (isset($_SESSION["id"])): ?>
-<form method="POST" action="../controller/livreDorController.php">
-    <textarea name="message" placeholder="Votre message..." required></textarea><br>
-    <button type="submit">Signer</button>
+<form method="POST" action="../controller/livreDorController.php" class="form-signature">
+    <label for="nom">Votre nom :</label>
+    <input type="text" name="nom" id="nom" required>
+
+    <label for="email">Votre email :</label>
+    <input type="email" name="email" id="email" required>
+
+    <label for="telephone">Votre téléphone :</label>
+    <input type="text" name="telephone" id="telephone">
+
+    <label for="sexe">Sexe :</label>
+    <select name="sexe" id="sexe">
+        <option value="Homme">Homme</option>
+        <option value="Femme">Femme</option>
+        <option value="Autre" selected>Autre</option>
+    </select>
+
+    <label for="message">Votre message :</label>
+    <textarea name="message" id="message" rows="4" required></textarea>
+
+    <button type="submit">🖊️ Signer</button>
 </form>
-<?php else: ?>
-<p>Vous devez être connecté pour signer le livre d'or.</p>
-<?php endif; ?>
 
-<h3>Messages :</h3>
-<?php foreach ($signatures as $sig): ?>
-    <p><strong><?= htmlspecialchars($sig["Prenom"]) ?> <?= htmlspecialchars($sig["Nom"]) ?>:</strong> <?= htmlspecialchars($sig["Message"]) ?> <em>(<?= $sig["Date_Signature"] ?>)</em></p>
-<?php endforeach; ?>
 
-<?php include("commun/footer.php"); ?>
+    <h3>🗒️ Messages :</h3>
+    <?php foreach ($signatures as $sig): ?>
+        <div class="message">
+            <p><strong><?= htmlspecialchars($sig["Nom_Auteur"] ?? "Invité") ?> :</strong></p>
+            <p><?= nl2br(htmlspecialchars($sig["Message"])) ?></p>
+            <em>Posté le <?= date("d/m/Y à H:i", strtotime($sig["Date_Signature"])) ?></em>
+        </div>
+    <?php endforeach; ?>
+</main>

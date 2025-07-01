@@ -1,19 +1,12 @@
-<div>
-    <h1>Page Accueil</h1>
-
-    <?php
-        if (isset($_SESSION['user'])){
-
-    ?>  <h1>Bienvenue vous êtes connecté
-            <?php echo $_SESSION['user']['Email'];?>
-        </h1> 
-
-        <h2>Nom: <?php echo $_SESSION['user'] ['Nom']; ?></h2>
-        <h2>Prenom: <?php echo $_SESSION['user'] ['Prenom']; ?></h2>
-
-        
-    <?php
-        }
-    ?>
-        
-</div>
+<main class="accueil">
+    <section class="intro">
+        <h2>Bienvenue au Restaurant Le Délice</h2>
+        <p>Chez nous, chaque assiette raconte une histoire… et chaque visite mérite une trace. Nous avons créé ce Livre d’Or pour que vous puissiez y déposer un mot, une impression, un souvenir.</p>
+        <p>Installez-vous, laissez parler votre cœur et vos papilles.</p>
+        <a href="index.php?page=livreDor" class="cta">🖊️ Signer le Livre d’Or</a>
+    </section>
+    <section class="ambiance">
+        <img src="../public/images/salle.jpg" alt="Salle du restaurant" class="photo">
+        <figcaption>Une ambiance chaleureuse et gourmande…</figcaption>
+    </section>
+</main>
