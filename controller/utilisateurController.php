@@ -34,7 +34,7 @@ class UtilisateurController
     {
         $this->utilisateur->ajouterUtilisateur($_POST['nom'], $_POST['prenom'], $_POST['email'], $_POST['password']);
 
-        header('Location:http://localhost/promo300/authjeudi/');
+        header('Location:http://localhost/promo300/livreDor/');
     }
 
     public function login()
@@ -45,7 +45,7 @@ class UtilisateurController
             session_start();
             $_SESSION['user'] = $user;
 
-            header('Location:http://localhost/promo300/authjeudi/');
+            header('Location:http://localhost/promo300/livreDor/');
         }
     }
 
