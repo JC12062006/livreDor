@@ -2,7 +2,7 @@
 
 	try{
 		$users = "monuser";
-		$pass = "";
+		$pass = "pZok&61Oxn$?GG4K";
 		$bdd = new PDO ('mysql:host=localhost;dbname=projetJoan',$users,$pass);
 
 	}catch (PDOException $e){
