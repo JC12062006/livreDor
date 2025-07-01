@@ -1,22 +1,31 @@
 <?php
+
 session_start();
-require_once('./bdd/bdd.php');
 
-$page = $_GET['page'] ?? 'accueil';
-$action = $_GET['action'] ?? null;
+include('view/commun/header.php');
 
-switch ($page) {
-    case 'accueil':
-        include('./view/accueil.php');
+$page = isset($_GET['page']) ? $_GET['page']: 'accueil';
+
+switch($page){
+    case 'login':
+        include ('view/login.php');
         break;
-    case 'video':
-        include('./controller/videoController.php');
+    case 'inscription':
+        include ('view/inscription.php');
         break;
     case 'profil':
-        include('./view/profil.php');
+        include('view/profil.php');
         break;
-    // etc...
+    case 'deconnection':
+        session_destroy();
+        header('Location:http://127.0.0.1/livreDor/');
+        exit();
+        break;
+    
     default:
-        include('./view/accueil.php');
+        include('view/accueil.php');
+        break;
 }
+
+include('view/commun/footer.php');
 ?>
