@@ -7,6 +7,7 @@ try {
         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
     ]);
 } catch (PDOException $e) {
+	die("Erreur PDO : " . $e->getMessage());
     error_log("Erreur PDO : " . $e->getMessage());
     die("Une erreur est survenue. Veuillez réessayer plus tard.");
 }
