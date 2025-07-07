@@ -13,27 +13,33 @@ function recupererSignatures() {
     $sql = "SELECT Nom_Auteur, Sexe, Email, Telephone, Message, Date_Signature 
             FROM Signatures 
             ORDER BY Date_Signature DESC";
-    $resultat = $bdd->query($sql);
-    
-    return $resultat->fetchAll(PDO::FETCH_ASSOC);
+
+    $stmt = $bdd->query($sql);
+    return $stmt->fetchAll();
 }
 
 /**
  * Ajoute une nouvelle signature dans la base de données.
  *
  * @param string $nom_auteur Le nom de la personne qui signe.
- * @param string $message Le contenu du message.
+ * @param string $message    Le contenu du message.
+ * @param string $email      Email de la personne.
+ * @param string $telephone  Numéro de téléphone.
+ * @param string $sexe       Sexe (Homme, Femme, Autre).
  */
-function ajouterSignature($nom_auteur, $message) {
+function ajouterSignature($nom_auteur, $message, $email, $telephone, $sexe) {
     global $bdd;
 
-    $sql = "INSERT INTO Signatures (Nom_Auteur, Message) 
-            VALUES (:nom, :message)";
-    
+    $sql = "INSERT INTO Signatures (Nom_Auteur, Message, Email, Telephone, Sexe, Date_Signature)
+            VALUES (:nom, :message, :email, :telephone, :sexe, NOW())";
+
     $stmt = $bdd->prepare($sql);
     $stmt->execute([
-        ':nom'     => $nom_auteur,
-        ':message' => $message
+        ':nom'       => $nom_auteur,
+        ':message'   => $message,
+        ':email'     => $email,
+        ':telephone' => $telephone,
+        ':sexe'      => $sexe
     ]);
 }
 ?>
