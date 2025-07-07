@@ -1,5 +1,4 @@
 <?php
-
 if (!isset($_SESSION['csrf_token'])) {
     $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
 }
@@ -10,7 +9,7 @@ $signatures = recupererSignatures();
 <main class="livre">
     <h2>💬 Livre d'Or</h2>
 
-    <form method="POST" action="../controller/livreDorController.php" class="form-signature">
+    <form method="POST" action="./controller/livreDorController.php" class="form-signature">
         <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
 
         <label for="nom">Votre nom :</label>
