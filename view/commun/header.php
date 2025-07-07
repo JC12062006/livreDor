@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Livre d'Or du Restaurant</title>
-    <link rel="stylesheet" href="/assets/public/style.css">
+    <link rel="stylesheet" href="public/style.css">
 </head>
 <body>
 <header class="header">

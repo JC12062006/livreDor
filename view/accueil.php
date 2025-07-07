@@ -6,7 +6,7 @@
         <a href="index.php?page=livreDor" class="cta">🖊️ Signer le Livre d’Or</a>
     </section>
     <section class="ambiance">
-    <img src="/projetJoan/public/images/salle.jpg" alt="Salle du restaurant" class="photo">
+    <img src="public/img/images.jpeg" class="photo">
         <figcaption>Une ambiance chaleureuse et gourmande…</figcaption>
     </section>
 </main>
