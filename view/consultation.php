@@ -16,3 +16,4 @@ $signatures = recupererSignatures();
         </div>
     <?php endforeach; ?>
 </main>
+

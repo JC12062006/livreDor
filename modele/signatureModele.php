@@ -10,7 +10,9 @@ require_once(__DIR__ . '/../bdd/bdd.php');
 function recupererSignatures() {
     global $bdd;
 
-    $sql = "SELECT * FROM Signatures ORDER BY Date_Signature DESC";
+    $sql = "SELECT Nom_Auteur, Sexe, Email, Telephone, Message, Date_Signature 
+            FROM Signatures 
+            ORDER BY Date_Signature DESC";
     $resultat = $bdd->query($sql);
     
     return $resultat->fetchAll(PDO::FETCH_ASSOC);
@@ -34,3 +36,4 @@ function ajouterSignature($nom_auteur, $message) {
         ':message' => $message
     ]);
 }
+?>
