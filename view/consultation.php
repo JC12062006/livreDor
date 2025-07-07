@@ -21,5 +21,4 @@ $signatures = recupererSignatures();
         <?php endforeach; ?>
     <?php endif; ?>
 
-    <p><a href="../projetjoan/index.php?page=livreDor">⬅️ Retour au formulaire</a></p>
 </main>
